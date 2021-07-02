@@ -75,7 +75,7 @@ Yan Liu
 #corresponding to the case study 2 in the paper.
 #Cancer status, clinical characters and gene expression are included in the data. 
 #We separated the dataset into three files named ending, charac and expression respectively.
-#delete the suspicious cancer samples
+#deleting the suspicious cancer samples
 ending1<-as.matrix(ending[-c(188:192),])
 #According to the status, we replace the status with 0 and 1. 
 ending1[,2][which(ending1[,2]=="no cancer")]<-0
@@ -118,7 +118,7 @@ genename<-as.matrix(genename)
 int<-intersect(proexp1[,1],genename[,2])
 rownames(proexp1)<-proexp1[,1]
 proexp2<-proexp1[,-1]
-#there are 64 genes mapped to the pathway.
+#There are 64 genes mapped to the pathway.
 expressiongene<-proexp2[int,]
 #The rows represent genes which need to transposed. 
 expressiongene1<-t(expressiongene[,-c(188:192)])
@@ -128,18 +128,18 @@ expressiongene2<-expressiongene1[-indexna,]
 w=seq(0,1,by=0.2)
 nse=2000
 
-### the speed of the mk package is limited by the HDI inference step which fits a 
+### The speed of the mk package is limited by the HDI inference step which fits a 
 #high-dimensional model when testing each variable. This is the step that takes the most time ### 
 hsa05223<-mk(expressiongene2,state1,cov,w,nse,family="binomial",method="lasso",
 standardize=TRUE,adjust=TRUE)
 #hsa05223 is a p-value vector which is obtained after the Cauchy p-value 
 #combination and multiple test adjustment.
 
-#draw a heatmap of -log10 p-values of main and interaction effects of genes
-#delete the covariates and do the -log10 transformation
+#drawing a heatmap of -log10 p-values of main and interaction effects of genes
+#deleting the covariates and do the -log10 transformation
 pval<- -log10(as.matrix(hsa05223[-c(1,2),]))
-#set up the p-value matrix for heatmap
-#let the genes array like which are in the heatmap
+#setting up the p-value matrix for heatmap
+#letting the genes array like which are in the heatmap
 s<-seq(ncol(expressiongene2)-1,1,by=-1)
 lis<-list()
 for(o in 1:length(s)){
@@ -151,10 +151,10 @@ P_value1<-matrix(0,ncol(expressiongene2),ncol(expressiongene2))
 
 for (r in 1:length(lis)){
   clue1<-which(unlis==r)
-#put the main effects on the diagonal of the heatmap matrix
+#putting the main effects on the diagonal of the heatmap matrix
   P_value[r,r]<-pval[,1][c(1:(ncol(expressiongene2)-1))][r]
   P_value[ncol(expressiongene2),ncol(expressiongene2)]<-pval[,1][ncol(expressiongene2)]
-#put the interaction effects on the other places of heatmap matrix
+#putting the interaction effects on the other places of heatmap matrix
   P_value[r,c((r+1):ncol(expressiongene2))]<-pval[,1][-c(1:ncol(expressiongene2))][clue1]
   P_value1[r,c((r+1):ncol(expressiongene2))]<-pval[,1][-c(1:ncol(expressiongene2))][clue1]
 }
@@ -173,7 +173,7 @@ dev.new()
 P_value2$Genes<-rownames(P_value2)
 P_value3<-melt(P_value2,id.vars=c("Genes"),value.name="pvalue",)
 
-#draw the heatmap of main and interaction effects
+#drawing the heatmap of main and interaction effects
 ggplot(P_value3,aes(Genes,variable))+ylab("Genes")+geom_tile(aes(fill=pvalue),
 color="white",size=0.01)+theme_classic()+theme(legend.position="top",
 legend.justification="right",legend.margin=margin(0,0,0,0),legend.box.margin=margin(0,0,-10,0),
