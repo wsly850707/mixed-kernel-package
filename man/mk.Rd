@@ -128,7 +128,7 @@ expressiongene2<-expressiongene1[-indexna,]
 w=seq(0,1,by=0.2)
 nse=2000
 
-### The speed of the mk package is limited by the HDI inference step which fits a 
+###The speed of the mk package is limited by the HDI inference step which fits a 
 #high-dimensional model when testing each variable. This is the step that takes the most time ### 
 hsa05223<-mk(expressiongene2,state1,cov,w,nse,family="binomial",method="lasso",
 standardize=TRUE,adjust=TRUE)
