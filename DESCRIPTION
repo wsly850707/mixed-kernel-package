@@ -1,0 +1,14 @@
+Package: mk
+Type: Package
+Title: Mixed Kernel Model
+Version: 1.0
+Date: 2021-06-24
+Author: Yan Liu
+Maintainer: Yan Liu<wsly-850707@163.com>
+Description: This function can be used to perform inference to test significant main and interaction effects in high-dimensional (generalized) linear model.
+Imports: hdi,MASS,ggplot2,reshape2
+Depends:R (>= 3.5.0)
+License: GPL-3
+encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1

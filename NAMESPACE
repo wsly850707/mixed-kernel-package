@@ -1,0 +1,3 @@
+import (hdi,MASS,ggplot2,reshape2)
+importFrom("stats", "cor", "pcauchy","glm")
+exportPattern("^[[:alpha:]]+")

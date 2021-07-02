@@ -1,0 +1,18 @@
+#' @title Data of phenotype
+#' @docType data
+#' @name pheno
+#' @keywords phenotype
+#' @format A matrix with 187 rows and 8 variables:
+#' \describe{
+#'  \item{V1}{ID of individuals}
+#'  \item{age}{age of individuals}
+#'  \item{gender}{gender of individuals}
+#'  \item{race}{race of individuals}
+#'  \item{smoking status}{whether a former smoker quit smoking for more than 10 years}
+#'  \item{packyears}{pack years of smoking}
+#'  \item{presence of hemopytsis}{whether a smoker had hemopytsis}
+#'  \item{presence of lymphadenopathy}{whether a smoker had lymphadenopathy}
+#'  #'  }
+#' 
+#' @source \url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE4115}
+"pheno"
